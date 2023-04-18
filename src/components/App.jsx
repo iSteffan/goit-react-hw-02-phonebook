@@ -5,52 +5,38 @@ import { nanoid } from 'nanoid'
 
 export class App extends Component {
   state = {
-    contacts: [{name: 2}],
+    contacts: [],
   }
 
 
   formSubmitHandler = data => {
-    console.log("props", data)
     const id = nanoid();
-    let dataArr = { ...data, id }
-        console.log("array", dataArr)
+    const dataArr = { ...data, id }
 
-    console.log(this.state)
-
-this.setState(oldState => {
-        const list = [...oldState.contacts]; // копія всіх елементів списку контактів зі старого стану
-
-        // додавання нового об'єкту контакту до масиву list
-        list.push({
-          id: nanoid(), //генерація id
-          name: data.name,
-        });
-
-        return { contacts: list };
-      });
-
-    // this.setState(prevState => ({
-    // contacts: [...prevState.contacts, dataArr],
-    //   }));
-    //   this.setState(({ contacts }) => ({
-    //   contacts: [dataArr, ...contacts],
-    // }));
-      console.log("state", this.state)
+    this.setState(prevState => ({
+    contacts: [...prevState.contacts, dataArr],
+      }));
 }
 
 
   render() {
     return (
-      <ContactForm onSubmit={this.formSubmitHandler} />
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.formSubmitHandler} />
+        <h2>Contacts</h2>
+        <ul>
+          {this.state.contacts.map((contact) => {
+            return (
+              <li key={contact.id}>
+                <p>{contact.name}: <span>{contact.number}</span></p>
+            </li>)
+          })}
+        </ul>
+      </div>
     )
   }
 
 
 
 };
-        // <input
-        //   type="tel"
-        //   name="number"
-        //   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        //   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        //   required/>
