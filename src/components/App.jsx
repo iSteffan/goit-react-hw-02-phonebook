@@ -46,11 +46,11 @@ export class App extends Component {
     return filteredContacts;
   };
 
-  deleteContact = (id) => {
+  deleteContact = id => {
     const { contacts } = this.state;
     const deletedContactById = contacts.filter(contact => contact.id !== id);
     this.setState({ contacts: deletedContactById });
-}
+  };
 
   render() {
     return (
@@ -62,7 +62,10 @@ export class App extends Component {
           filter={this.state.filter}
           handleInputChange={this.handleInputChange}
         ></Filter>
-        <ContactList contacts={this.filter()} onDelete={this.deleteContact}></ContactList>
+        <ContactList
+          contacts={this.filter()}
+          onDelete={this.deleteContact}
+        ></ContactList>
       </div>
     );
   }
