@@ -1,6 +1,9 @@
-export const Filter = ({handleInputChange, filter}) => {
+import PropTypes from 'prop-types';
+import { Input } from './Filter.styled';
+
+export const Filter = ({ handleInputChange, filter }) => {
     return (
-      <input
+      <Input
           value={filter}
           type="text"
           name="filter"
@@ -10,4 +13,9 @@ export const Filter = ({handleInputChange, filter}) => {
           onChange={handleInputChange}
         />
     );
-  }
+}
+  
+Filter.propTypes = {
+    handleInputChange: PropTypes.func.isRequired,
+    filter: PropTypes.string.isRequired,
+};
