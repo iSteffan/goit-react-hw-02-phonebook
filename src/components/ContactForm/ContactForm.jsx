@@ -28,6 +28,7 @@ export class ContactForm extends Component {
             <Form onSubmit={this.handleSubmit}>
                 <Label>
                     Name
+                    <br/>
                     <Input
                         value={this.state.name}
                         type="text"
@@ -39,6 +40,7 @@ export class ContactForm extends Component {
                 </Label>
                 <Label>
                     Number
+                    <br/>
                     <Input
                         value={this.state.number}
                         type="tel"

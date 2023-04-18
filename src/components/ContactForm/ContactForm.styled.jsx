@@ -18,4 +18,5 @@ margin-left: 18px;
 height: 30px`;
 
 export const Btn = styled.button`
-padding: 5px;`;
+padding: 5px;
+margin-top: 20px;`;
